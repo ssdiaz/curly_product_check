@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative  '../lib/environment'
+
+#puts "welcome test - bin"
+
+CurlyProductCheck::CLI.new.call
