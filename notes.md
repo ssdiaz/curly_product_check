@@ -23,7 +23,7 @@ Let's Get Started!
 
 Select a Hair Category by typing the number in the terminal and press enter:
 
-- User chooses Hair category
+- User chooses Category
 Type the number to select the Brand Name:
 
 - User chooses Brand Name
@@ -44,7 +44,7 @@ Type the number to select the Product:
     *maybe* <!-- 2. View Recently Viewed Products -->
         3. Return to Products
         4. Return to Brands
-        5. Return to Hair Categories 
+        5. Return to Categories 
 
 - user selects:
     1. View Wish List
@@ -66,7 +66,7 @@ Type the number to select the Product:
                 - display [menu] -->
     4. Return to Products
     5. Returnt to Brands
-    6. Return to Hair Categories 
+    6. Return to Categories 
 
 
 
@@ -74,11 +74,11 @@ Type the number to select the Product:
     - CLI 
         - make sure you name space -> ModuleName::CLI
     - Scraper
-    - HairCategory
+    - Category
         - has many: Brand
     - Brand
         - has many: Product
-        - belongs to: HairCategory
+        - belongs to: Category
     - Product
         - belongs to: Brand
         - methods: *view_product*, add_WL_item (needs to call add to wish list) 

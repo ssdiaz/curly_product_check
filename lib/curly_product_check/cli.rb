@@ -15,25 +15,28 @@ class CurlyProductCheck::CLI
     end
 
     def scrape_categories
-    #TODO ***** need to scrape this *****
-        category_scrape = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color", "Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Kid's Haircare", "Travel Size", "Gifts & Value Sets"]
+    #TODO ***** need to scrape this ? or after??*****
+        #category_scrape = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color", "Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Kid's Haircare", "Travel Size", "Gifts & Value Sets"]
+        @categories = CurlyProductCheck::Categories.all
+
 
         #shovels in valid cats. in new array ---> should go in scrape_categories???
-        @categories = []
-        category_scrape.each do |x|
-            if VALID_CATEGORIES.include?(x)
-              @categories << x
-            end
-         end         
+        # categories_array = []
+        # @category.each do |x|
+        #     if VALID_CATEGORIES.include?(x)
+        #       categories_array << x
+        #     end
+        #  end         
          #note: this also works: puts @categories & VALID_CATEGORIES 
     end
 
     def display_categories
-        puts "Hair Categories:"
+        puts "\nSelect a Hair Category above by typing the number and press enter:"
+        puts "\nHair Categories:"
         @categories.each.with_index do |x, index|
             puts "  #{index+1}. #{x}"  
         end
-        puts "\nSelect a Hair Category above by typing the number and press enter:\n"
+
     end
 
 #this is where I need to pick up, and create scrape for scrape_categories
