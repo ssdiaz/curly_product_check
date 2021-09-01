@@ -1,24 +1,21 @@
-class CurlyProductCheck::CLI
+#Responsibility of CLI: just to interact with user. 
+#   not to go out and get data.
 
-    #HIDE_TOOLS_CATEGORIES = ["Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Gifts & Value Sets"]
-    VALID_CATEGORIES = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color",  "Kid's Haircare", "Travel Size"]
+class CurlyProductCheck::CLI
 
     def call
         puts "\nWelcome to the Curly Product Check App for Ulta Beauty Online!
-              \nUse this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.\n
-              \nLet's Get Started!\n\n"
-        
+              \nUse this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.
+              \nLet's Get Started!\n"
+              
         #order of methods:
-        scrape_categories
+        get_categories
         display_categories #aka list_categories
-        #get_user_category()
+        get_user_category
     end
 
-    def scrape_categories
-    #TODO ***** need to scrape this ? or after??*****
-        #category_scrape = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color", "Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Kid's Haircare", "Travel Size", "Gifts & Value Sets"]
-        @categories = CurlyProductCheck::Categories.all
-
+    def get_categories      
+        @category = CurlyProductCheck::Category.all
 
         #shovels in valid cats. in new array ---> should go in scrape_categories???
         # categories_array = []
@@ -31,40 +28,28 @@ class CurlyProductCheck::CLI
     end
 
     def display_categories
-        puts "\nSelect a Hair Category above by typing the number and press enter:"
         puts "\nHair Categories:"
-        @categories.each.with_index do |x, index|
-            puts "  #{index+1}. #{x}"  
+        @category.each.with_index do |x, index|
+            puts "  #{index+1}. #{x.name}"  #above has argument? :  @category.each.with_index(1) do |x, index|
         end
-
+        puts "\nSelect a Hair Category above by typing the number and press enter:"
     end
-
-#this is where I need to pick up, and create scrape for scrape_categories
 
     def get_user_category
-        chosen_cat = gets.strip
-        #user_input = gets.strip
-        
-        if valid_input(user_input)
-            chosen_cat.to_i <= @category.length && chosen_cat.to_i <0
-        end
+        chosen_category = gets.strip.to_i  #user_input = gets.strip.to_i
+        show_brands_for(chosen_category) if valid_input(chosen_category, @category)
     end
-
-
-   
-
 
     def valid_input(user_input, data)
-        user_input.to_i <= @category.length && user_input.to_i <0
+        user_input.to_i <= data.length && user_input.to_i > 0
     end
 
-
-
-
+    def show_brands_for(chosen_category)
+        category = @category[chosen_category - 1]
+        puts "Select a brand: #{category.name}"
+    end
 
     #second layer - for brands
-
-
 
 
     # def input_to_index(user_input)
@@ -73,8 +58,6 @@ class CurlyProductCheck::CLI
 
    
     
-
-
     #select_category(user_input)
 
     #puts "Type the number to select the Brand Name:"

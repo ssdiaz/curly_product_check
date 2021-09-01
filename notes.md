@@ -123,3 +123,12 @@ Menu will display as:
         3. Return to Products
         4. Return to Brands
         5. Return to Categories 
+
+
+
+
+
+Review:
+
+- To make a class method (where it is called on the class itself, not on an instance
+    -> use self.methodname

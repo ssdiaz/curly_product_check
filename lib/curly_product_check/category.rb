@@ -1,8 +1,20 @@
-class CurlyProductCheck::Categories
-    @@all = ["run here - Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color", "Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Kid's Haircare", "Travel Size", "Gifts & Value Sets"]
+class CurlyProductCheck::Category
+    @@all = [] 
+        
+    attr_accessor :name
+
+    def initialize(name)
+        @name = name
+        save
+    end
 
     def self.all
+        CurlyProductCheck::Scraper.scrape_categories if @@all.empty?
         @@all
+    end
+
+    def save
+        @@all << self
     end
 
 end
