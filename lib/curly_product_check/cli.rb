@@ -16,21 +16,12 @@ class CurlyProductCheck::CLI
 
     def get_categories      
         @category = CurlyProductCheck::Category.all
-
-        #shovels in valid cats. in new array ---> should go in scrape_categories???
-        # categories_array = []
-        # @category.each do |x|
-        #     if VALID_CATEGORIES.include?(x)
-        #       categories_array << x
-        #     end
-        #  end         
-         #note: this also works: puts @categories & VALID_CATEGORIES 
     end
 
     def display_categories
         puts "\nHair Categories:"
         @category.each.with_index do |x, index|
-            puts "  #{index+1}. #{x.name}"  #above has argument? :  @category.each.with_index(1) do |x, index|
+            puts "  #{index+1}. #{x.name}"  #above has argument? :  @category.each.with_index(1) do |x, index|. Oh this is to say start at 1 instead of default 0
         end
         puts "\nSelect a Hair Category above by typing the number and press enter:"
     end
@@ -46,7 +37,11 @@ class CurlyProductCheck::CLI
 
     def show_brands_for(chosen_category)
         category = @category[chosen_category - 1]
+        category.get_brand
         puts "Select a brand: #{category.name}"
+        category.brand.each.with_index(1) do |brand, index|
+            puts "     #{index}. #{brand.name}"
+        end
     end
 
     #second layer - for brands

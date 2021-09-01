@@ -19,4 +19,9 @@ class CurlyProductCheck::Scraper
         end
     end
 
+    def self.scrape_brands(category)
+        CurlyProductCheck::Brand.new("brandA", category)
+        CurlyProductCheck::Brand.new("brandB", category)
+    end
+
 end

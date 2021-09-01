@@ -129,6 +129,5 @@ Menu will display as:
 
 
 Review:
-
 - To make a class method (where it is called on the class itself, not on an instance
     -> use self.methodname
