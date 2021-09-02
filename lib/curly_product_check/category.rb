@@ -20,7 +20,7 @@ class CurlyProductCheck::Category
     end
 
     def save
-        @@all << self
+        @@all << self unless @@all.include?(name)
     end
 
     # def brand
