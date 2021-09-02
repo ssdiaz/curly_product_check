@@ -131,3 +131,13 @@ Menu will display as:
 Review:
 - To make a class method (where it is called on the class itself, not on an instance
     -> use self.methodname
+
+
+Code Refractions:
+
+    To get rid of the first 2 letters in a string
+        # raw_url = i.attr("href")
+        # url_to_array = raw_url.split("").drop(2) #drop first two //
+        # url = url_to_array.join
+
+    #HIDE_TOOLS_CATEGORIES = ["Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Gifts & Value Sets"]

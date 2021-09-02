@@ -1,11 +1,15 @@
+#Responsibility: Category Class
+# Has many Brands.
+
 class CurlyProductCheck::Category
     @@all = [] 
         
-    attr_accessor :name, :brand
-   # attr_writer :brand
+    attr_accessor :name, :brand, :url
+    # attr_writer :brand
 
-    def initialize(name)
+    def initialize(name, url)
         @name = name
+        @url = url
         @brand = []
         save
     end

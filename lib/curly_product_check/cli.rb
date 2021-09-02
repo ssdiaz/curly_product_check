@@ -38,9 +38,12 @@ class CurlyProductCheck::CLI
     def show_brands_for(chosen_category)
         category = @category[chosen_category - 1]
         category.get_brand
-        puts "Select a brand: #{category.name}"
+
+        puts "\nSelect a brand: #{category.name}"
+
         category.brand.each.with_index(1) do |brand, index|
-            puts "     #{index}. #{brand.name}"
+            puts "  #{index}. #{brand.name}"
+
         end
     end
 
