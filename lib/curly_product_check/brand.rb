@@ -24,7 +24,7 @@ class CurlyProductCheck::Brand
     end
 
     def add_to_category #instance - calling on one intance
-    @category.brands << self unless @category.brands.include?(name)
+        @category.brands << self unless @category.brands.include?(name)
     end
 
     def get_products

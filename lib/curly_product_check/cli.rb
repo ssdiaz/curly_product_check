@@ -12,8 +12,14 @@ class CurlyProductCheck::CLI
         set_categories
         display_categories 
         get_user_category
+
         set_brands
         get_user_brand
+
+        set_products
+        get_user_product
+
+        set_ingredients
     end
 
     def set_categories      
@@ -22,8 +28,8 @@ class CurlyProductCheck::CLI
 
     def display_categories
         puts "\nHair Categories:"
-        @category.each.with_index do |x, index|
-            puts "  #{index+1}. #{x.name}"  #above has argument? :  @category.each.with_index(1) do |x, index|. Oh this is to say start at 1 instead of default 0
+        @category.each.with_index(1) do |x, index|
+            puts "  #{index}. #{x.name}"  
         end
         puts "Select a Category:"
     end
@@ -54,22 +60,38 @@ class CurlyProductCheck::CLI
 
     def get_user_brand
         chosen_brand = gets.strip.to_i 
-        show_products_for(chosen_brand) #if valid_input(chosen_brand, @brand) #why does this mess up?????
+        show_products_for(chosen_brand) if valid_input(chosen_brand, @brand) #why does this mess up?????
     end
 
     def show_products_for(chosen_brand)
         brand = @brand[chosen_brand - 1]
-        brand.get_products #need to create
+        brand.get_products 
         puts "Products for: #{brand.name}"
 
         brand.products.each.with_index(1) do |product, index|
-            puts "  #{index}. #{product.description}"
+            puts "  #{index}. #{product.name}"
         end
         puts "Select a Product:"
-
     end
 
+    def set_products
+        @product = CurlyProductCheck::Product.all
+    end
 
+    def get_user_product
+        chosen_product = gets.strip.to_i 
+        show_ingredients_for(chosen_product) if valid_input(chosen_product, @product) #why does this mess up?????
+    end 
+
+    def show_ingredients_for(chosen_product)
+        product = @product[chosen_product - 1]
+       # product.get_ingredients
+        puts "Ingredients for: #{product.name}"
+    end
+
+    def set_ingredients
+       # @ingredients = CurlyProductCheck::Ingredient.all
+    end
 
 
 
