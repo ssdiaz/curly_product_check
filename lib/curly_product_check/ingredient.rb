@@ -14,12 +14,12 @@ class CurlyProductCheck::Ingredient
     
     @@all = [] #only has brand names; needed for scrapping check; ex: for 5: ["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]
         
-    attr_accessor :name, :product, :url 
+    attr_accessor :name, :product#, :url 
 
-    def initialize(name, product, url)
+    def initialize(name, product)#, url)
         @name = name
         @product = product
-        @url = url
+       # @url = url
         add_to_product 
         save 
     end

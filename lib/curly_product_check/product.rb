@@ -30,5 +30,4 @@ class CurlyProductCheck::Product
         CurlyProductCheck::Scraper.scrape_ingredients(self) if @ingredients.empty?
     end
 
-
 end

@@ -80,7 +80,7 @@ class CurlyProductCheck::CLI
 
     def get_user_product
         chosen_product = gets.strip.to_i 
-        show_ingredients_for(chosen_product) if valid_input(chosen_product, @product) #why does this mess up?????
+        show_ingredients_for(chosen_product) if valid_input(chosen_product, @product)
     end 
 
     def show_ingredients_for(chosen_product)
@@ -88,8 +88,9 @@ class CurlyProductCheck::CLI
         product.get_ingredients
         puts "Ingredients for: #{product.name}"
 
+        binding.pry
         product.ingredients.each.with_index(1) do |ingredient, index|
-            puts "  #{index}. #{ingredient.name}"
+            puts "  #{index}.  NAME: #{ingredient.name}"
         end
     end
 

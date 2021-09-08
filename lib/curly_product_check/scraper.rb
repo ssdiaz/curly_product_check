@@ -22,8 +22,8 @@ class CurlyProductCheck::Scraper
         @category = category
         url = "https:#{category.url}"
         doc = Nokogiri::HTML(open(url))
-        brand = doc.css("h4.prod-title a")
 
+        brand = doc.css("h4.prod-title a")
         brands_scraped= []
         brand.each do |i|
             name = i.text.strip
@@ -34,10 +34,11 @@ class CurlyProductCheck::Scraper
     end
 
     def self.scrape_products(brand)
+        @brand = brand
         url = "https:#{@category.url}"
         doc = Nokogiri::HTML(open(url))
-        product = doc.css("div.prod-title-desc")
 
+        product = doc.css("div.prod-title-desc")
         product.each do |i|
             product_brand = i.css("h4").text.strip!
             url_product = i.css("h4").css("a").attr("href")
@@ -47,26 +48,21 @@ class CurlyProductCheck::Scraper
                 CurlyProductCheck::Product.new(product_name, brand, url_product)#, description_product) 
             end
         end
-        #  CurlyProductCheck::Product.new("desc - prodA", brand, "url1", ) #test prod data 
-        #  CurlyProductCheck::Product.new("desc - prodB", brand, "url2", ) #test prod data 
     end
 
     def self.scrape_ingredients(product)
-        # url = "https:#{@category.url}"
-        # doc = Nokogiri::HTML(open(url))
-        # product = doc.css("div.prod-title-desc")
+        url = "https://www.ulta.com#{@brand.url}"
+        doc = Nokogiri::HTML(open(url))
 
-        # product.each do |i|
-        #     name_product = i.css("h4").text.strip!
-        #     url_product = i.css("h4").css("a").attr("href")
-        #     description_product = i.css("p").text.strip!
+        ingredient_string = doc.css("div.ProductDetail__ingredients").text
+        ingredient_array = ingredient_string.split(", ")
 
-        #     if name_product == brand.name
-        #         CurlyProductCheck::Product.new(description_product, brand, url_product)#, description_product) 
-        #     end
-        # end
-         CurlyProductCheck::Ingredient.new("name - ingredA", product, "url1") #test ingred data 
-         CurlyProductCheck::Ingredient.new("name - ingredB", product, "url2") #test ingred data 
+        ingredient_array.each do |i|
+                name = i
+                CurlyProductCheck::Ingredient.new(name, product)
+        end
+        # CurlyProductCheck::Ingredient.new(name, product) #test ingred data 
+        # CurlyProductCheck::Ingredient.new("name - ingredB", product)
     end
 
 
