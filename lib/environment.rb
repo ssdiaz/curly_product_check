@@ -5,6 +5,7 @@ require_relative "./curly_product_check/category"
 require_relative "./curly_product_check/scraper"
 require_relative "./curly_product_check/brand"
 require_relative "./curly_product_check/product"
+require_relative "./curly_product_check/ingredient"
 
 require 'pry'
 require 'nokogiri'

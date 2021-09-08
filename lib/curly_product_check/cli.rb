@@ -85,8 +85,12 @@ class CurlyProductCheck::CLI
 
     def show_ingredients_for(chosen_product)
         product = @product[chosen_product - 1]
-       # product.get_ingredients
+        product.get_ingredients
         puts "Ingredients for: #{product.name}"
+
+        product.ingredients.each.with_index(1) do |ingredient, index|
+            puts "  #{index}. #{ingredient.name}"
+        end
     end
 
     def set_ingredients

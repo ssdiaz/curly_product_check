@@ -47,8 +47,8 @@ class CurlyProductCheck::Scraper
                 CurlyProductCheck::Product.new(product_name, brand, url_product)#, description_product) 
             end
         end
-        #  CurlyProductCheck::Product.new("desc - prodA", brand, "url1", ) #test brand data 
-        #  CurlyProductCheck::Product.new("desc - prodB", brand, "url2", ) #test brand data 
+        #  CurlyProductCheck::Product.new("desc - prodA", brand, "url1", ) #test prod data 
+        #  CurlyProductCheck::Product.new("desc - prodB", brand, "url2", ) #test prod data 
     end
 
     def self.scrape_ingredients(product)
@@ -65,8 +65,8 @@ class CurlyProductCheck::Scraper
         #         CurlyProductCheck::Product.new(description_product, brand, url_product)#, description_product) 
         #     end
         # end
-         CurlyProductCheck::Ingredient.new("name - ingredA", product, "url1") #test brand data 
-         CurlyProductCheck::Ingredient.new("name - ingredB", product, "url2") #test brand data 
+         CurlyProductCheck::Ingredient.new("name - ingredA", product, "url1") #test ingred data 
+         CurlyProductCheck::Ingredient.new("name - ingredB", product, "url2") #test ingred data 
     end
 
 
