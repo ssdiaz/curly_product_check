@@ -45,7 +45,7 @@ class CurlyProductCheck::CLI
         category.brands.each.with_index(1) do |brand, index|
             puts "  #{index}. #{brand.name}"
         end
-        puts "Select a Product:"
+        puts "Select a Brand:"
     end
 
     def set_brands  #["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]    
@@ -63,9 +63,9 @@ class CurlyProductCheck::CLI
         puts "Products for: #{brand.name}"
 
         brand.products.each.with_index(1) do |product, index|
-            puts "  #{index}. brand:#{product.brand.name} url:#{product.url} - desc:#{product.description}"
+            puts "  #{index}. #{product.description}"
         end
-
+        puts "Select a Product:"
 
     end
 
