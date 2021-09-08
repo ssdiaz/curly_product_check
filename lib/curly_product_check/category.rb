@@ -4,13 +4,12 @@
 class CurlyProductCheck::Category
     @@all = [] 
         
-    attr_accessor :name, :brand, :url
-    # attr_writer :brand
+    attr_accessor :name, :brands, :url
 
     def initialize(name, url)
         @name = name
         @url = url
-        @brand = []
+        @brands = []
         save
     end
 
@@ -23,14 +22,8 @@ class CurlyProductCheck::Category
         @@all << self unless @@all.include?(name)
     end
 
-    # def brand
-    #     CurlyProductCheck::Scraper.scrape_brands(self) if @brand.empty?
-    #     @brand
-    # end
-
-    def get_brand
-        CurlyProductCheck::Scraper.scrape_brands(self) if @brand.empty?
-        @brand
+    def get_brands
+        CurlyProductCheck::Scraper.scrape_brands(self) if @brands.empty?
     end
 
-end
+end    

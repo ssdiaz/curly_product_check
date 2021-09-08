@@ -21,14 +21,36 @@ class CurlyProductCheck::Scraper
     def self.scrape_brands(category)
         url = "https:#{category.url}"
         doc = Nokogiri::HTML(open(url))
-        brand_title = doc.css("h4.prod-title a")
+        brand = doc.css("h4.prod-title a")
 
-        brand_title.each do |i|
+        brands_scraped= []
+        brand.each do |i|
             name = i.text.strip
-            CurlyProductCheck::Brand.new(name, category) unless CurlyProductCheck::Brand.all.include?(name)
+            url_brand = i.attr("href")
+            CurlyProductCheck::Brand.new(name, category, url_brand) unless brands_scraped.include?(name)              # CurlyProductCheck::Brand.new(name, category) unless CurlyProductCheck::Brand.all.include?(name)
+            brands_scraped << name
         end
-        # CurlyProductCheck::Brand.new("name - brandA", category) #test brand data 
-        # CurlyProductCheck::Brand.new("name - brandB", category) #test brand data 
     end
+
+
+    def self.scrape_products(brand)
+        url = "https://www.ulta.com#{brand.url}"
+        doc = Nokogiri::HTML(open(url))
+        product = doc.css("h4.prod-title a")
+
+        products_scraped= []
+        product.each do |i|
+            name = i.text.strip
+            url_product = i.attr("href")
+            CurlyProductCheck::Product.new(name, brand, url_product) unless products_scraped.include?(name)              # CurlyProductCheck::Brand.new(name, category) unless CurlyProductCheck::Brand.all.include?(name)
+            products_scraped << name
+        end
+
+        # CurlyProductCheck::Product.new("name - prodA", brand, "url1") #test brand data 
+        # CurlyProductCheck::Product.new("name - prodB", brand, "url2") #test brand data 
+    end
+
+
+
 
 end

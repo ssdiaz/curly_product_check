@@ -141,3 +141,20 @@ Code Refractions:
         # url = url_to_array.join
 
     #HIDE_TOOLS_CATEGORIES = ["Hair Styling Tools", "Hair Brushes & Combs", "Accessories", "Gifts & Value Sets"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
