@@ -19,6 +19,7 @@ class CurlyProductCheck::Scraper
     end
 
     def self.scrape_brands(category)
+        @category = category
         url = "https:#{category.url}"
         doc = Nokogiri::HTML(open(url))
         brand = doc.css("h4.prod-title a")
@@ -34,9 +35,7 @@ class CurlyProductCheck::Scraper
 
 
     def self.scrape_products(brand)
-        # url = "https://www.ulta.com#{brand.url}"
-        #url = "https:#{category.url}"
-        url = "https://www.ulta.com/hair-kids-haircare?N=26xz" #NEED TO FIX THIS!!!!!
+        url = "https:#{@category.url}"
         
         doc = Nokogiri::HTML(open(url))
         product = doc.css("div.prod-title-desc")
