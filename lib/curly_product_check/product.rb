@@ -4,12 +4,11 @@
 class CurlyProductCheck::Product
     @@all = [] #only has brand names; needed for scrapping check; ex: for 5: ["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]
         
-    attr_accessor :name, :category, :brand, :products, :ingredients, :url
+    attr_accessor :name, :category, :brand, :products, :ingredients, :url, :description
 
-    def initialize(name, brand, url)
-        @name = name
+    def initialize(description, brand, url)
+        @description = description
         @brand = brand
-       # @product = []
         @url = url
         add_to_brand #notify category(month) of brand(event)
         save #save/add Brand instance

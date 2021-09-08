@@ -63,7 +63,7 @@ class CurlyProductCheck::CLI
         puts "Products for: #{brand.name}"
 
         brand.products.each.with_index(1) do |product, index|
-            puts "  #{index}. #{product.name} #{product.url}"
+            puts "  #{index}. brand:#{product.brand.name} url:#{product.url} - desc:#{product.description}"
         end
 
 
