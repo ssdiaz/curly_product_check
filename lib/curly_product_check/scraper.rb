@@ -45,7 +45,7 @@ class CurlyProductCheck::Scraper
             product_name = i.css("p").text.strip!
 
             if product_brand == brand.name
-                CurlyProductCheck::Product.new(product_name, brand, url_product)#, description_product) 
+                CurlyProductCheck::Product.new(product_name, brand, url_product)
             end
         end
     end
@@ -58,8 +58,8 @@ class CurlyProductCheck::Scraper
         ingredient_array = ingredient_string.split(", ")
 
         ingredient_array.each do |i|
-                name = i
-                CurlyProductCheck::Ingredient.new(name, product)
+            name = i
+            CurlyProductCheck::Ingredient.new(name, product)
         end
         # CurlyProductCheck::Ingredient.new(name, product) #test ingred data 
         # CurlyProductCheck::Ingredient.new("name - ingredB", product)

@@ -11,4 +11,3 @@ CurlyProductCheck::CLI.new.call
     # using name spacing (nesting) here incase user has other gems called CLI. 
     # .new is a class method that triggers initialize method/lifecyclet/instance method
     # .call is an instance method
-

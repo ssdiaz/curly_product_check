@@ -19,7 +19,8 @@ class CurlyProductCheck::CLI
         set_products
         get_user_product
 
-        set_ingredients
+        #check_ingredients_list
+       # set_ingredients
     end
 
     def set_categories      
@@ -35,7 +36,7 @@ class CurlyProductCheck::CLI
     end
 
     def get_user_category
-        chosen_category = gets.strip.to_i  #user_input = gets.strip.to_i
+        chosen_category = gets.strip.to_i 
         show_brands_for(chosen_category) if valid_input(chosen_category, @category)
     end
 
@@ -88,15 +89,41 @@ class CurlyProductCheck::CLI
         product.get_ingredients
         puts "Ingredients for: #{product.name}"
 
-        binding.pry
         product.ingredients.each.with_index(1) do |ingredient, index|
-            puts "  #{index}.  NAME: #{ingredient.name}"
+            puts "  #{index}. #{ingredient.name}"
+            #puts "#{ingredient.name}" if @products.include?(CurlyProductCheck::Ingredient.GOOD_ALCOHOL)
+            
         end
+
     end
 
-    def set_ingredients
-       # @ingredients = CurlyProductCheck::Ingredient.all
-    end
+    #here, need to do an alchol check? or where does that belong... in ingredients?
+    #need to display ONLY alcohol ingredietns and a little blurb
+    #so, I think this belongs in ingredient check, and here only displays alcohols
+    # def display_alcohol_ingredients
+    # end
+
+
+        # def run_check_ingredients(chosen_product)
+    #     product = @product[chosen_product - 1]
+    #     product.check_ingredients
+    # end
+
+    # def check_ingredients_list(chosen_product)
+    #     # @product.each do |i|
+    #     #     puts i if CurlyProductCheck::Ingredient.GOOD_ALCOHOL.include?(i)
+    #     #     #puts"hi"
+    #     # end
+    #     product = @product[chosen_product - 1]
+    #     product.ingredients.check_ingredients
+    #     puts "end"
+    # end
+
+
+
+    # def set_ingredients
+    #    @ingredients = CurlyProductCheck::Ingredient.all
+    # end
 
 
 
