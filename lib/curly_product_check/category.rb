@@ -21,7 +21,7 @@ class CurlyProductCheck::Category
         @@all << self unless @@all.include?(name)
     end
 
-    def get_brands
+    def scrape_brands
         CurlyProductCheck::Scraper.scrape_brands(self) if @brands.empty?
     end
 

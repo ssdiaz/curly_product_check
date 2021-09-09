@@ -37,25 +37,25 @@ class CurlyProductCheck::CLI
        # puts "Select a Category:"
     end
 
+    def valid_input(user_input, data)
+        user_input.to_i <= data.count && user_input.to_i > 0
+    end
+
     def get_user_category
         puts "Select a Category:"
         chosen_category = gets.strip.to_i 
         if valid_input(chosen_category, @category)
+            puts valid_input(chosen_category, @category) ###############test
             show_brands_for(chosen_category)
-            #binding.pry
         else
             puts "Unidentified response. Please type a number 1-#{@category.count}."
             get_user_category
         end 
     end
 
-    def valid_input(user_input, data)
-        user_input.to_i <= data.length && user_input.to_i > 0
-    end
-
     def show_brands_for(chosen_category)
         category = @category[chosen_category - 1]
-        category.get_brands
+        category.scrape_brands
         puts "\nBrands for: #{category.name}"
         category.brands.each.with_index(1) do |brand, index|
             puts "  #{index}. #{brand.name}"
