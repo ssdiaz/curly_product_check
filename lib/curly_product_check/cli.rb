@@ -1,5 +1,4 @@
-#Responsibility of CLI: just to interact with user. 
-#   not to go out and get data.
+#Responsibility of CLI: just to interact with user.
 
 class CurlyProductCheck::CLI
 
@@ -90,12 +89,6 @@ class CurlyProductCheck::CLI
         @product = CurlyProductCheck::Product.all
     end
 
-    # def get_user_product
-    #     chosen_product = gets.strip.to_i 
-    #     show_ingredients_for(chosen_product) if valid_input(chosen_product, @product)
-    # end 
-
-
     def get_user_product
         chosen_product = gets.strip.to_i 
         if valid_input(chosen_product, @product)
@@ -106,23 +99,11 @@ class CurlyProductCheck::CLI
         end 
     end
 
-
-
-
-
-
-
-
-
-
     def show_ingredients_for(chosen_product)
         @product_chosen = @product[chosen_product - 1]
         @product_chosen.get_ingredients
         
          puts "Product chosen: #{@product_chosen.name}\n"
-        # @product_chosen.ingredients.each.with_index(1) do |ingredient, index|
-        #    puts "  #{index}. #{ingredient.name}"
-        # end
     end
 
     def set_ingredients
