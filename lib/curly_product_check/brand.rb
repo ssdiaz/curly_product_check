@@ -4,15 +4,15 @@
 class CurlyProductCheck::Brand
     @@all = [] #only has brand names; needed for scrapping check; ex: for 5: ["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]
         
-    attr_accessor :name, :category, :products, :url #, :ingredients
+    attr_accessor :name, :category, :products, :url 
 
     def initialize(name, category, url)
         @name = name
         @category = category
         @url = url
         @products = []
-        add_to_category #notify category(month) of brand(event)
-        save #save/add Brand instance
+        add_to_category 
+        save 
     end
 
     def self.all
@@ -20,7 +20,7 @@ class CurlyProductCheck::Brand
     end
 
     def save
-        @@all << self unless @@all.include?(self)                #@@all << self unless @@all.include?(self)
+        @@all << self unless @@all.include?(self)  
     end
 
     def add_to_category #instance - calling on one intance
@@ -29,6 +29,10 @@ class CurlyProductCheck::Brand
 
     def get_products
         CurlyProductCheck::Scraper.scrape_products(self) if @products.empty?
+    end
+
+    def self.clear
+        @@all.clear
     end
 
 end

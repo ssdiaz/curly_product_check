@@ -61,9 +61,6 @@ class CurlyProductCheck::Scraper
             name = i
             CurlyProductCheck::Ingredient.new(name, product)
         end
-        # CurlyProductCheck::Ingredient.new(name, product) #test ingred data 
-        # CurlyProductCheck::Ingredient.new("name - ingredB", product)
     end
-
 
 end

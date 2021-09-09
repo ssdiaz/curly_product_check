@@ -19,8 +19,10 @@ class CurlyProductCheck::CLI
         set_products
         get_user_product
 
-        #check_ingredients_list
-       # set_ingredients
+        set_ingredients
+        display_ingredient_type
+
+        search_again
     end
 
     def set_categories      
@@ -37,7 +39,12 @@ class CurlyProductCheck::CLI
 
     def get_user_category
         chosen_category = gets.strip.to_i 
-        show_brands_for(chosen_category) if valid_input(chosen_category, @category)
+        if valid_input(chosen_category, @category)
+            show_brands_for(chosen_category)
+        else
+            puts "Unidentified response. Please type a number, 1-#{@category.count}:"
+            get_user_category
+        end 
     end
 
     def valid_input(user_input, data)
@@ -47,7 +54,6 @@ class CurlyProductCheck::CLI
     def show_brands_for(chosen_category)
         category = @category[chosen_category - 1]
         category.get_brands
-       # binding.pry
         puts "\nBrands for: #{category.name}"
         category.brands.each.with_index(1) do |brand, index|
             puts "  #{index}. #{brand.name}"
@@ -61,7 +67,12 @@ class CurlyProductCheck::CLI
 
     def get_user_brand
         chosen_brand = gets.strip.to_i 
-        show_products_for(chosen_brand) if valid_input(chosen_brand, @brand) #why does this mess up?????
+        if valid_input(chosen_brand, @brand) 
+            show_products_for(chosen_brand)
+        else
+            puts "Unidentified response. Please type a number, 1-#{@brand.count}:"
+            get_user_brand
+        end 
     end
 
     def show_products_for(chosen_brand)
@@ -79,51 +90,22 @@ class CurlyProductCheck::CLI
         @product = CurlyProductCheck::Product.all
     end
 
+    # def get_user_product
+    #     chosen_product = gets.strip.to_i 
+    #     show_ingredients_for(chosen_product) if valid_input(chosen_product, @product)
+    # end 
+
+
     def get_user_product
         chosen_product = gets.strip.to_i 
-        show_ingredients_for(chosen_product) if valid_input(chosen_product, @product)
-    end 
-
-    def show_ingredients_for(chosen_product)
-        product = @product[chosen_product - 1]
-        product.get_ingredients
-        puts "Ingredients for: #{product.name}"
-
-        product.ingredients.each.with_index(1) do |ingredient, index|
-            puts "  #{index}. #{ingredient.name}"
-            #puts "#{ingredient.name}" if @products.include?(CurlyProductCheck::Ingredient.GOOD_ALCOHOL)
-            
-        end
-
+        if valid_input(chosen_product, @product)
+            show_ingredients_for(chosen_product)
+        else
+            puts "Unidentified response. Please type a number, 1-#{@product.count}:"
+            get_user_product
+        end 
     end
 
-    #here, need to do an alchol check? or where does that belong... in ingredients?
-    #need to display ONLY alcohol ingredietns and a little blurb
-    #so, I think this belongs in ingredient check, and here only displays alcohols
-    # def display_alcohol_ingredients
-    # end
-
-
-        # def run_check_ingredients(chosen_product)
-    #     product = @product[chosen_product - 1]
-    #     product.check_ingredients
-    # end
-
-    # def check_ingredients_list(chosen_product)
-    #     # @product.each do |i|
-    #     #     puts i if CurlyProductCheck::Ingredient.GOOD_ALCOHOL.include?(i)
-    #     #     #puts"hi"
-    #     # end
-    #     product = @product[chosen_product - 1]
-    #     product.ingredients.check_ingredients
-    #     puts "end"
-    # end
-
-
-
-    # def set_ingredients
-    #    @ingredients = CurlyProductCheck::Ingredient.all
-    # end
 
 
 
@@ -133,6 +115,67 @@ class CurlyProductCheck::CLI
 
 
 
+    def show_ingredients_for(chosen_product)
+        @product_chosen = @product[chosen_product - 1]
+        @product_chosen.get_ingredients
+        
+         puts "Product chosen: #{@product_chosen.name}\n"
+        # @product_chosen.ingredients.each.with_index(1) do |ingredient, index|
+        #    puts "  #{index}. #{ingredient.name}"
+        # end
+    end
 
+    def set_ingredients
+        @good_ingredients = CurlyProductCheck::Ingredient.all_good
+        @bad_ingredients = CurlyProductCheck::Ingredient.all_bad
+        @good_list = CurlyProductCheck::Ingredient.view_good_list
+        @bad_list = CurlyProductCheck::Ingredient.view_bad_list
+    end
+
+    def display_ingredient_type
+        if @good_ingredients.any? 
+            puts "This product contains: Good Alcohols"
+            @good_ingredients.each.with_index(1) do |ingredient, index|
+                puts "   #{index}. #{ingredient.name}"
+            end  
+            puts "  Good Alcohols are fatty, long-chained alcohols which provide moisture to curls."
+            puts "  Source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols"              
+        
+        elsif @bad_ingredients.any?
+            puts "This product contains: Unfavorable Alcohols"
+            @bad_ingredients.each.with_index(1) do |ingredient, index|
+                puts "   #{index}. #{ingredient.name}"
+            end
+            puts "  Unfavorable alcohols are short-chained alcohols which strip the hair of moisture and often cause frizz."
+            puts "  Source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols"
+       
+        else 
+           puts "This product does not contain any of the below ingredients:"
+            print "  Good Alcohols: "
+                @good_list.each.with_index(1) do |i, index|
+                    print "  #{index}. #{i}" 
+                end        
+            print "\n  Unfavorable Alcohols: "
+                @bad_list.each.with_index(1) do |i, index|
+                    print "  #{index}. #{i}" 
+                end
+        end
+    end
+
+    def search_again
+        puts "\nWould you like to search again? Please type y/n:"
+        user_answer = gets.strip.to_s
+        if user_answer == "y" || user_answer == "Y"
+            call
+        elsif user_answer == "n" || user_answer == "N"
+            puts "Program Terminated. Have a nice Day!"
+        else
+            print "Unidentified character. "
+            CurlyProductCheck::Brand.clear
+            CurlyProductCheck::Product.clear
+            CurlyProductCheck::Ingredient.clear
+            search_again
+        end
+    end
 
 end
