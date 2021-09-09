@@ -24,24 +24,27 @@ class CurlyProductCheck::CLI
         search_again
     end
 
-    def set_categories      
+    def set_categories 
         @category = CurlyProductCheck::Category.all
+        CurlyProductCheck::Scraper.scrape_categories if @category.empty?
     end
 
     def display_categories
         puts "\nHair Categories:"
-        @category.each.with_index(1) do |x, index|
-            puts "  #{index}. #{x.name}"  
+        @category.each.with_index(1) do |category, index|
+            puts "  #{index}. #{category.name}"  
         end
-        puts "Select a Category:"
+       # puts "Select a Category:"
     end
 
     def get_user_category
+        puts "Select a Category:"
         chosen_category = gets.strip.to_i 
         if valid_input(chosen_category, @category)
             show_brands_for(chosen_category)
+            #binding.pry
         else
-            puts "Unidentified response. Please type a number, 1-#{@category.count}:"
+            puts "Unidentified response. Please type a number 1-#{@category.count}."
             get_user_category
         end 
     end
@@ -70,8 +73,11 @@ class CurlyProductCheck::CLI
             show_products_for(chosen_brand)
         else
             puts "Unidentified response. Please type a number, 1-#{@brand.count}:"
+            #binding.pry
             get_user_brand
+  
         end 
+
     end
 
     def show_products_for(chosen_brand)

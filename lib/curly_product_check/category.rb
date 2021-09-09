@@ -14,7 +14,6 @@ class CurlyProductCheck::Category
     end
 
     def self.all
-        CurlyProductCheck::Scraper.scrape_categories if @@all.empty?
         @@all
     end
 

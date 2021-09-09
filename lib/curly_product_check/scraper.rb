@@ -10,8 +10,8 @@ class CurlyProductCheck::Scraper
 
         doc = Nokogiri::HTML(open(site))
 
-        category = doc.css("li.cat-sub-nav a")
-        category.each do |i|
+        category_list = doc.css("li.cat-sub-nav a")
+        category_list.each do |i|
             name = i.text.strip
             url = i.attr("href")
             CurlyProductCheck::Category.new(name, url) if valid_categories.include?(name)
