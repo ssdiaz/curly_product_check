@@ -18,7 +18,6 @@ class CurlyProductCheck::CLI
         get_user_category
 
         get_user_brand
-        #get_user_object("Brand", @category_chosen.brands),call_method)
 
         set_products
         get_user_product
@@ -115,7 +114,6 @@ class CurlyProductCheck::CLI
         bad = CurlyProductCheck::Ingredient.all_bad_ingredients
         @good_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, good)
         @bad_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, bad)
-
         @good_list = CurlyProductCheck::Ingredient.view_good_alcohols
         @bad_list = CurlyProductCheck::Ingredient.view_bad_alcohols
     end
