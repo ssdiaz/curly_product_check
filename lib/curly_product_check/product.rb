@@ -34,8 +34,4 @@ class CurlyProductCheck::Product
         end
     end
 
-    # def self.clear
-    #     @@all.clear
-    # end
-
 end

@@ -1,18 +1,11 @@
-#Responsibility: Ingredients Class
-
 class CurlyProductCheck::Ingredient
-    @@good_alcohol = ["Cetyl Alcohol", "Cetearyl Alcohol", "Stearyl Alcohol", "Lauryl Alcohol"]
-    # fatty alcohols, long-chain alcohols
-    # add moisture by drawing water to the hair, add slip for detangling, add thickness to a product
     # source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
 
-    @@bad_alcohol = ["Ethanol Alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
-    # short-chained alcohols  
-    # source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
-    # "These small-chain alcohols are small enough to penetrate the hair shaft and are often the culprit for frizz."
- 
-    @@all_good = []
-    @@all_bad = []
+    @@good_alcohol_list = ["Cetyl Alcohol", "Cetearyl Alcohol", "Stearyl Alcohol", "Lauryl Alcohol"]
+    @@bad_alcohol_list = ["Ethanol Alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
+
+    @@all_good_ingredients = []
+    @@all_bad_ingredients = []
         
     attr_accessor :name, :product
 
@@ -23,19 +16,25 @@ class CurlyProductCheck::Ingredient
     end
 
     def add_to_product 
-        if @@good_alcohol.include?(name) 
-            @@all_good << self
+        if @@good_alcohol_list.include?(name) 
+            @@all_good_ingredients  << self
             @product.ingredients << self unless @product.ingredients.include?(name)
         end
 
-        if @@bad_alcohol.include?(name) 
-            @@all_bad << self
+        if @@bad_alcohol_list.include?(name) 
+            @@all_bad_ingredients  << self
             @product.ingredients << self unless @product.ingredients.include?(name)
         end
     end
 
     def self.good_ingredients_for_product(product)
-        @@all_good.select do |ingredient|
+        @@all_good_ingredients .select do |ingredient|
+            ingredient.product == product
+        end
+    end
+
+    def self.bad_ingredients_for_product(product)
+        @@all_bad_ingredients .select do |ingredient|
             ingredient.product == product
         end
     end
@@ -46,35 +45,20 @@ class CurlyProductCheck::Ingredient
     #     end
     # end
 
-
-
-    def self.bad_ingredients_for_product(product)
-        @@all_bad.select do |ingredient|
-            ingredient.product == product
-        end
-    end
-
-
-
-    # def self.all_good
-    #     @@all_good
+    # def self.all_good_ingredients 
+    #     @@all_good_ingredients 
     # end
 
-    # def self.all_bad
-    #     @@all_bad
+    # def self.all_bad_ingredients 
+    #     @@all_bad_ingredients 
     # end
 
     def self.view_good_list
-        @@good_alcohol
+        @@good_alcohol_list
     end
 
     def self.view_bad_list
-        @@bad_alcohol
-    end
-
-    def self.clear
-        @@all_good.clear
-        @@all_bad.clear
+        @@bad_alcohol_list
     end
 
 end

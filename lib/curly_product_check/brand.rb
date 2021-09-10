@@ -34,8 +34,4 @@ class CurlyProductCheck::Brand
         CurlyProductCheck::Scraper.scrape_products(self) if @products.empty?
     end
 
-    # def self.clear
-    #     @@all.clear
-    # end
-
 end
