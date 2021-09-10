@@ -144,7 +144,17 @@ Code Refractions:
 
 
 
+    # def self.good_ingredients_for_product(product)
+    #     @@all_good_ingredients .select do |ingredient|
+    #         ingredient.product == product
+    #     end
+    # end
 
+    # def self.bad_ingredients_for_product(product)
+    #     @@all_bad_ingredients .select do |ingredient|
+    #         ingredient.product == product
+    #     end
+    # end
 
 
 

@@ -111,11 +111,15 @@ class CurlyProductCheck::CLI
     end
 
     def set_ingredients
-       # @good = CurlyProductCheck::Ingredient.all_good
-        @good_ingredients = CurlyProductCheck::Ingredient.good_ingredients_for_product(@product_chosen)
-        @bad_ingredients = CurlyProductCheck::Ingredient.bad_ingredients_for_product(@product_chosen)
-        @good_list = CurlyProductCheck::Ingredient.view_good_list
-        @bad_list = CurlyProductCheck::Ingredient.view_bad_list
+        good = CurlyProductCheck::Ingredient.all_good_ingredients
+        bad = CurlyProductCheck::Ingredient.all_bad_ingredients
+        #@good_ingredients = CurlyProductCheck::Ingredient.good_ingredients_for_product(@product_chosen)
+        @good_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, good)
+        @bad_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, bad)
+
+       #@bad_ingredients = CurlyProductCheck::Ingredient.bad_ingredients_for_product(@product_chosen)
+        @good_list = CurlyProductCheck::Ingredient.view_good_alcohols
+        @bad_list = CurlyProductCheck::Ingredient.view_bad_alcohols
 
     end
 
