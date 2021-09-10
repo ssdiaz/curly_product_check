@@ -1,9 +1,6 @@
-#Responsibility: Brand Class
-# Has many products. But one category (?) 
-
 class CurlyProductCheck::Brand
-    @@all = [] #only has brand names; needed for scrapping check; ex: for 5: ["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]
-        
+    @@all = [] 
+
     attr_accessor :name, :category, :products, :url 
 
     def initialize(name, category, url)
@@ -20,19 +17,25 @@ class CurlyProductCheck::Brand
     end
 
     def save
-        @@all << self unless @@all.include?(self)  
+       @@all << self unless @@all.include?(self)  
     end
 
     def add_to_category #instance - calling on one intance
         @category.brands << self unless @category.brands.include?(name)
     end
 
-    def get_products
+    def self.find_brands_for_category(category)
+        self.all.select do |brand|
+            brand.category == category
+        end
+    end
+
+    def scrape_products
         CurlyProductCheck::Scraper.scrape_products(self) if @products.empty?
     end
 
-    def self.clear
-        @@all.clear
-    end
+    # def self.clear
+    #     @@all.clear
+    # end
 
 end

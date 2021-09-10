@@ -1,7 +1,5 @@
-#Responsibility: Product Class
-
 class CurlyProductCheck::Product
-    @@all = [] #only has brand names; needed for scrapping check; ex: for 5: ["SoCozy", "Fairy Tales", "Babo Botanicals", "Wet Brush", "Invisibobble"]
+    @@all = [] 
         
     attr_accessor :name, :brand, :products, :ingredients, :url
 
@@ -18,20 +16,26 @@ class CurlyProductCheck::Product
         @@all
     end
 
-     def save
+    def save
         @@all << self unless @@all.include?(self)                  
-     end
+    end
 
-     def add_to_brand #instance - calling on one intance
+    def add_to_brand #instance - calling on one intance
         @brand.products << self unless @brand.products.include?(name)
-     end
+    end
 
-     def get_ingredients
+    def scrape_ingredients
         CurlyProductCheck::Scraper.scrape_ingredients(self) if @ingredients.empty?
     end
 
-    def self.clear
-        @@all.clear
+    def self.find_products_for_brand(brand)
+        self.all.select do |product|
+            product.brand == brand
+        end
     end
+
+    # def self.clear
+    #     @@all.clear
+    # end
 
 end

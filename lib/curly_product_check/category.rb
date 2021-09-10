@@ -1,6 +1,3 @@
-#Responsibility: Category Class
-# Has many Brands.
-
 class CurlyProductCheck::Category
     @@all = [] 
         

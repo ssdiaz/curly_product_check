@@ -1,0 +1,85 @@
+
+
+
+################### OBJECT: [[brand above]] og - don't delete
+#means I need to re-do my show_objects_for methods 
+    def get_user_object(class_name, object, call_method)
+        puts "Select a #{class_name}"
+        user_object = gets.strip.to_i 
+
+        if valid_input(user_object, object)
+            call_method(user_object)
+        else
+            puts "Unidentified response. Please type a number, 1-#{object.count}:"
+            get_user_object
+        end 
+    end
+
+#########BRAND
+    def get_user_brand
+        puts "Select a Brand:"
+        user_brand = gets.strip.to_i 
+        if valid_input(user_brand, @category_chosen.brands) 
+            show_products_for(user_brand)
+        else
+            puts "Unidentified response. Please type a number, 1-#{@category_chosen.brands.count}"
+            get_user_brand
+        end 
+    end
+
+#################### CATEGORY:
+def get_user_category
+    puts "Select a Category:"
+    user_category = gets.strip.to_i 
+    if valid_input(user_category, @all_categories)
+        show_brands_for(user_category)
+    else
+        puts "Unidentified response. Please type a number 1-#{@all_categories.count}."
+        get_user_category
+    end 
+end
+
+#################### PRODUCT:
+    def get_user_product
+        puts "Select a Product:"
+        user_product = gets.strip.to_i 
+
+        if valid_input(user_product, @products)
+            show_product_chosen(user_product)
+        else
+            puts "Unidentified response. Please type a number, 1-#{@products.count}:"
+            get_user_product
+        end 
+    end
+
+###################
+###########
+##########
+#########################################
+def show_brands_for(user_category)
+    @category_chosen = @all_categories[user_category - 1]
+    @category_chosen.scrape_brands
+    puts "\nBrands for: #{@category_chosen.name}"
+    @category_chosen.brands.each.with_index(1) do |brand, index|
+        puts "  #{index}. #{brand.name}"
+    end
+end
+############
+def show_products_for(user_brand)
+    brands_in_category = CurlyProductCheck::Brand.find_brands_for_category(@category_chosen)
+
+    @brand_chosen = brands_in_category[user_brand - 1]
+    @brand_chosen.scrape_products 
+    puts "Products for: #{@brand_chosen.name}"
+
+    @brand_chosen.products.each.with_index(1) do |product, index|
+        puts "  #{index}. #{product.name}"
+    end
+end
+###################################
+def show_product_chosen(user_product) #show_ingredients_fors
+    product_chosen = @products[user_product - 1]
+    product_chosen.get_ingredients
+     puts "Product chosen: #{product_chosen.name}\n"
+end
+#########################

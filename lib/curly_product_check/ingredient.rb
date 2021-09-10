@@ -6,7 +6,7 @@ class CurlyProductCheck::Ingredient
     # add moisture by drawing water to the hair, add slip for detangling, add thickness to a product
     # source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
 
-    @@bad_alcohol = ["Ethanol alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
+    @@bad_alcohol = ["Ethanol Alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
     # short-chained alcohols  
     # source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
     # "These small-chain alcohols are small enough to penetrate the hair shaft and are often the culprit for frizz."
@@ -34,13 +34,35 @@ class CurlyProductCheck::Ingredient
         end
     end
 
-    def self.all_good
-        @@all_good
+    def self.good_ingredients_for_product(product)
+        @@all_good.select do |ingredient|
+            ingredient.product == product
+        end
     end
 
-    def self.all_bad
-        @@all_bad
+    # def self.good_ingredients_for_product(product, array)
+    #     self.array.select do |ingredient|
+    #         ingredient.product == product
+    #     end
+    # end
+
+
+
+    def self.bad_ingredients_for_product(product)
+        @@all_bad.select do |ingredient|
+            ingredient.product == product
+        end
     end
+
+
+
+    # def self.all_good
+    #     @@all_good
+    # end
+
+    # def self.all_bad
+    #     @@all_bad
+    # end
 
     def self.view_good_list
         @@good_alcohol
