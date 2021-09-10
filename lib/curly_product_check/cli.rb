@@ -150,7 +150,7 @@ class CurlyProductCheck::CLI
     end
 
     def search_again
-        puts "\nWould you like to search again? Type y/n:"
+        puts "\nWould you like to search again? Type Y/N:"
         user_answer = gets.strip.to_s
         if user_answer == "y" || user_answer == "Y"
             call
