@@ -2,7 +2,7 @@ class CurlyProductCheck::Scraper
 
     def self.scrape_categories    
         site = "https://www.ulta.com/hair?N=26wz"
-        valid_categories = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color",  "Kid's Haircare", "Travel Size"]
+        valid_categories = ["Shampoo & Conditioner", "Treatment", "Styling Products", "Hair Color", "Kid's Haircare", "Travel Size"]
         doc = Nokogiri::HTML(open(site))        
         category_list = doc.css("li.cat-sub-nav a")
 
@@ -40,12 +40,14 @@ class CurlyProductCheck::Scraper
             product_name = i.css("p").text.strip!
             if product_brand == brand.name
                 CurlyProductCheck::Product.new(product_name, brand, url_product)
+                #CurlyProductCheck::Product.new(product_name, brand)#, url_product)
             end
         end
     end
 
     def self.scrape_ingredients(product)
-        url = "https://www.ulta.com#{@brand.url}"
+        #url = "https://www.ulta.com#{@brand.url}"
+        url = "https://www.ulta.com#{product.url}"
         doc = Nokogiri::HTML(open(url))
         ingredient_string = doc.css("div.ProductDetail__ingredients").text
         ingredient_array = ingredient_string.split(", ")

@@ -14,12 +14,12 @@ class CurlyProductCheck::Category
         @@all
     end
 
-    def save
-        @@all << self unless @@all.include?(name)
-    end
-
     def scrape_brands
         CurlyProductCheck::Scraper.scrape_brands(self) if @brands.empty?
+    end
+
+    def save
+       @@all << self unless @@all.include?(self)  
     end
 
 end    

@@ -2,6 +2,15 @@
 
 class CurlyProductCheck::CLI
 
+    def greeting
+        puts "\nWelcome to the Curly Product Check App for Ulta Beauty Online!
+              \nUse this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.
+              \nSources: 
+    https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
+    https://www.ulta.com/
+              \n\nLet's Get Started!\n\n"
+    end
+
     def call
         #order of methods:
         set_categories
@@ -18,15 +27,6 @@ class CurlyProductCheck::CLI
         display_ingredient_type
 
         search_again
-    end
-
-    def greeting
-        puts "\nWelcome to the Curly Product Check App for Ulta Beauty Online!
-              \nUse this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.
-              \nSources: 
-    https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
-    https://www.ulta.com/
-              \n\nLet's Get Started!\n\n"
     end
 
     def set_categories 
@@ -113,14 +113,11 @@ class CurlyProductCheck::CLI
     def set_ingredients
         good = CurlyProductCheck::Ingredient.all_good_ingredients
         bad = CurlyProductCheck::Ingredient.all_bad_ingredients
-        #@good_ingredients = CurlyProductCheck::Ingredient.good_ingredients_for_product(@product_chosen)
         @good_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, good)
         @bad_ingredients = CurlyProductCheck::Ingredient.ingredients_for_product(@product_chosen, bad)
 
-       #@bad_ingredients = CurlyProductCheck::Ingredient.bad_ingredients_for_product(@product_chosen)
         @good_list = CurlyProductCheck::Ingredient.view_good_alcohols
         @bad_list = CurlyProductCheck::Ingredient.view_bad_alcohols
-
     end
 
     def display_ingredient_type

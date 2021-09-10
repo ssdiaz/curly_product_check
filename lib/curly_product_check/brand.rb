@@ -8,8 +8,8 @@ class CurlyProductCheck::Brand
         @category = category
         @url = url
         @products = []
-        add_to_category 
         save 
+        add_to_category 
     end
 
     def self.all
