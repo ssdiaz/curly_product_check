@@ -1,12 +1,11 @@
 class CurlyProductCheck::Brand
     @@all = [] 
 
-    attr_accessor :name, :category, :products, :url 
+    attr_accessor :name, :category, :products
 
-    def initialize(name, category, url)
+    def initialize(name, category)
         @name = name
         @category = category
-        @url = url
         @products = []
         save 
         add_to_category 
@@ -20,7 +19,7 @@ class CurlyProductCheck::Brand
        @@all << self unless @@all.include?(self)  
     end
 
-    def add_to_category #instance - calling on one intance
+    def add_to_category
         @category.brands << self unless @category.brands.include?(name)
     end
 

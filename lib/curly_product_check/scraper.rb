@@ -23,7 +23,7 @@ class CurlyProductCheck::Scraper
         brand.each do |i|
             name = i.text.strip
             url_brand = i.attr("href")
-            CurlyProductCheck::Brand.new(name, category, url_brand) unless brands_scraped.include?(name) 
+            CurlyProductCheck::Brand.new(name, category) unless brands_scraped.include?(name) 
             brands_scraped << name
         end
     end
@@ -40,13 +40,11 @@ class CurlyProductCheck::Scraper
             product_name = i.css("p").text.strip!
             if product_brand == brand.name
                 CurlyProductCheck::Product.new(product_name, brand, url_product)
-                #CurlyProductCheck::Product.new(product_name, brand)#, url_product)
             end
         end
     end
 
     def self.scrape_ingredients(product)
-        #url = "https://www.ulta.com#{@brand.url}"
         url = "https://www.ulta.com#{product.url}"
         doc = Nokogiri::HTML(open(url))
         ingredient_string = doc.css("div.ProductDetail__ingredients").text
