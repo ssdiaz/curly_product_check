@@ -45,7 +45,7 @@ class CurlyProductCheck::CLI
     end
 
     def get_user_category
-        puts "Select a Category:"
+        puts "\nSelect a Category:"
         user_category = gets.strip.to_i 
         if valid_input(user_category, @all_categories)
             show_brands_for(user_category)
@@ -65,7 +65,7 @@ class CurlyProductCheck::CLI
     end
 
     def get_user_brand
-        puts "Select a Brand:"
+        puts "\nSelect a Brand:"
         user_brand = gets.strip.to_i 
         if valid_input(user_brand, @category_chosen.brands) 
             show_products_for(user_brand)
@@ -92,7 +92,7 @@ class CurlyProductCheck::CLI
     end
 
     def get_user_product
-        puts "Select a Product:"
+        puts "\nSelect a Product:"
         user_product = gets.strip.to_i 
 
         if valid_input(user_product, @products)
@@ -106,7 +106,7 @@ class CurlyProductCheck::CLI
     def show_product_chosen(user_product) #show_ingredients_fors
         @product_chosen = @products[user_product - 1]
         @product_chosen.scrape_ingredients
-         puts "Product chosen: #{@product_chosen.name}\n"
+         puts "\nProduct chosen: #{@product_chosen.name}"
     end
 
     def set_ingredients
