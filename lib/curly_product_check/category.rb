@@ -1,7 +1,7 @@
 class CurlyProductCheck::Category
     @@all = [] 
         
-    attr_accessor :name, :url, :brands,
+    attr_accessor :name, :url, :brands
 
     def initialize(name, url)
         @name = name
