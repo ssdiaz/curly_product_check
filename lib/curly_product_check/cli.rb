@@ -80,7 +80,7 @@ class CurlyProductCheck::CLI
 
         @brand_chosen = brands_in_category[user_brand - 1]
         @brand_chosen.scrape_products 
-        puts "Products for: #{@brand_chosen.name}"
+        puts "\nProducts for: #{@brand_chosen.name}"
 
         @brand_chosen.products.each.with_index(1) do |product, index|
             puts "  #{index}. #{product.name}"
@@ -121,29 +121,34 @@ class CurlyProductCheck::CLI
     def display_ingredient_type
         if @good_ingredients.any? || @bad_ingredients.any?
             if @good_ingredients.any? 
-                puts "\nThis product contains: Good Alcohols."
-                puts "  Good Alcohols are fatty, long-chained alcohols which provide moisture to curls."
+                puts "\nThis product contains: Helpful Alcohols"
+                puts "  Helpful alcohols are fatty, long-chained alcohols which provide moisture to curls."
                 @good_ingredients.each.with_index(1) do |ingredient, index|
-                    puts "   #{index}. #{ingredient.name}"
-                end              
+                    puts "  #{index}. #{ingredient.name}"
+                end
+            else
+                puts "\nThis product does not contain helpful alcohols."
             end
             if @bad_ingredients.any?
                 puts "\nThis product contains: Unfavorable Alcohols"
                 puts "  Unfavorable alcohols are short-chained alcohols which strip the hair of moisture and often cause frizz."
                 @bad_ingredients.each.with_index(1) do |ingredient, index|
-                    puts "   #{index}. #{ingredient.name}"
+                    puts "  #{index}. #{ingredient.name}"
                 end
+            else                 
+                puts "\nThis product does not contain unfavorable alcohols."
             end
         else 
-            puts "This product does not contain any of the below ingredients:"
-            print "  Good Alcohols: "
-                @good_list.each.with_index(1) do |i, index|
-                    print "  #{index}. #{i}" 
+            puts "\nThis product does not contain any of the below ingredients:"
+            print "  Helpful Alcohols:"
+                @good_list.each.with_index(1) do |ingredient, index|
+                    print " #{index}. #{ingredient} " 
                 end        
-            print "\n  Unfavorable Alcohols: "
-                @bad_list.each.with_index(1) do |i, index|
-                    print "  #{index}. #{i}" 
+            print "\n  Unfavorable Alcohols:"
+                @bad_list.each.with_index(1) do |ingredient, index|
+                    print " #{index}. #{ingredient} " 
                 end
+            puts "\n"
         end
     end
 
