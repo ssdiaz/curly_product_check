@@ -3,7 +3,7 @@
 class CurlyProductCheck::CLI
 
     def greeting
-        puts "\nWelcome to the Curly Product Check App for Ulta Beauty Online!
+        puts "\nWelcome to the Curly Product Check for Ulta Beauty Online!
               \nUse this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.
               \nSources: 
     https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
