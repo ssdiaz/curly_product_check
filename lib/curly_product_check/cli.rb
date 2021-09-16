@@ -158,7 +158,7 @@ class CurlyProductCheck::CLI
         if user_answer == "y" || user_answer == "Y"
             call
         elsif user_answer == "n" || user_answer == "N"
-            puts "\nProgram Terminated. Have a nice day!"
+            puts "\nProgram terminated. Have a nice day!"
         else
             print "Unidentified character. "
             search_again
