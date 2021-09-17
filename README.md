@@ -24,11 +24,11 @@ Or install it yourself as:
 
 ## Usage
 
-This CLI will display whether the ingredients contain a helpful or harmful alcohol for curly hair based on a product selected from Ulta.com. 
+This CLI will display whether the ingredients contain a helpful or harmful alcohol for curly hair based on a Best Seller product from Ulta.com. 
 
 This CLI is designed to help the user decide if a hair product will fit their curly hair needs before purchasing, without having to search each product for the list of ingredients. 
 
-Using the CLI, the user will select a Hair Category, Brand, then Product, which will display if the product has any of the helpful or harmful alcohols listed below. 
+Using the CLI, the user will select a Hair Category, Brand, then Product, which will display if the product contains any of the helpful or harmful alcohols listed below. 
 
 Helpful Alcohols are defined as:
    -  Long-chained alcohols which provide moisture to curls
