@@ -1,6 +1,6 @@
 class CurlyProductCheck::Ingredient
     GOOD_ALCOHOLS = ["Cetyl Alcohol", "Cetearyl Alcohol", "Stearyl Alcohol", "Lauryl Alcohol"]
-    BAD_ALCOHOLS = ["Ethanol Alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
+    BAD_ALCOHOLS = ["Ethanol Alcohol", "Ethyl Alcohol", "Propanol Alcohol", "Alcohol Denat", "Isopropyl Alcohol", "Isopropanol Alcohol", "Benzyl Alcohol"] 
     # source: https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
 
     @@all_good_ingredients = []

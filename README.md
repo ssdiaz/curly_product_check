@@ -36,7 +36,7 @@ Helpful Alcohols are defined as:
 
 Harmful Alcohols are defined as:
    -  Short-chained alcohols which strip the hair of moisture and cause frizz
-   -  Ethanol alcohol, Ethyl Alcohol, Propanol Alcohol, Alcohol denat, Isopropyl Alcohol, Isopropanol Alcohol, Benzyl Alcohol 
+   -  Ethanol alcohol, Ethyl Alcohol, Propanol Alcohol, Alcohol Denat, Isopropyl Alcohol, Isopropanol Alcohol, Benzyl Alcohol 
 
 Source for alcohol type is from: 
     https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
