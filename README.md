@@ -4,7 +4,7 @@
 
 TODO: Delete this and the text above, and describe your gem -->
 
-Welcome to the Curly Product Check for Ulta Beauty Online! Use this CLI App to select a product and find out if the ingredients contains a helpful or harmful alcohol for your curls.
+Welcome to the Curly Product Check for Ulta Beauty Online! Use this CLI App to select a product and find out if the ingredients contain a helpful or harmful alcohol for your curls.
 
 ## Installation
 
@@ -24,16 +24,18 @@ Or install it yourself as:
 
 ## Usage
 
-This CLI will display whether an ingredient contains a helpful or harmful alcohol for curly hair from the products sold on Ulta.com. 
+This CLI will display whether the ingredients contain a helpful or harmful alcohol for curly hair based on a product selected from Ulta.com. 
 
-This CLI is designed to help the user decide if a hair product will fit their curly hair needs before purchasing from Ulta, without having to search each product for their list of ingredients. 
+This CLI is designed to help the user decide if a hair product will fit their curly hair needs before purchasing, without having to search each product for the list of ingredients. 
 
-Using the CLI, the user will select a Hair Category, then select a Brand, then select a Product, which will display if the product has any of the helpful or harmful alcohols listed below. 
+Using the CLI, the user will select a Hair Category, Brand, then Product, which will display if the product has any of the helpful or harmful alcohols listed below. 
 
 Helpful Alcohols are defined as:
+   -  Long-chained alcohols which provide moisture to curls
    -  Cetyl Alcohol, Cetearyl Alcohol, Stearyl Alcohol, Lauryl Alcohol
 
 Harmful Alcohols are defined as:
+   -  Short-chained alcohols which strip the hair of moisture and cause frizz
    -  Ethanol alcohol, Ethyl Alcohol, Propanol Alcohol, Alcohol denat, Isopropyl Alcohol, Isopropanol Alcohol, Benzyl Alcohol 
 
 Source for alcohol type is from: 
