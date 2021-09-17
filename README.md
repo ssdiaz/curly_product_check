@@ -32,6 +32,7 @@ Using the CLI, the user will select a Hair Category, then select a Brand, then s
 
 Helpful Alcohols are defined as:
    -  Cetyl Alcohol, Cetearyl Alcohol, Stearyl Alcohol, Lauryl Alcohol
+
 Harmful Alcohols are defined as:
    -  Ethanol alcohol, Ethyl Alcohol, Propanol Alcohol, Alcohol denat, Isopropyl Alcohol, Isopropanol Alcohol, Benzyl Alcohol 
 
