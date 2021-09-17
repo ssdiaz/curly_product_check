@@ -131,7 +131,7 @@ class CurlyProductCheck::CLI
             end
             if @bad_ingredients.any?
                 puts "\n  This product contains: Unfavorable Alcohols"
-                puts "    Unfavorable alcohols are short-chained alcohols which strip the hair of moisture and often cause frizz."
+                puts "    Unfavorable alcohols are short-chained alcohols which strip the hair of moisture and cause frizz."
                 @bad_ingredients.each.with_index(1) do |ingredient, index|
                     puts "    #{index}. #{ingredient.name}"
                 end
