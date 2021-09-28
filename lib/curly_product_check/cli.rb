@@ -9,6 +9,7 @@ class CurlyProductCheck::CLI
     https://www.naturallycurly.com/curlreading/home/good-alcohols-vs-bad-alcohols
     https://www.ulta.com/
               \n\nLet's Get Started!\n\n"
+        call
     end
 
     def call

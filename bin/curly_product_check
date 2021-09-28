@@ -1,14 +1,11 @@
 #!/usr/bin/env ruby
     #'shabang' to tell terminal to use ruby language
+    #this file is our console subsitite; this is our run file that is called/executed when user runs the app
 
 require_relative '../lib/environment'
 
-#puts "welcome test - bin"
-
-#this file is our console subsitite; this is our run file that is called/executed when user runs the app
-
 CurlyProductCheck::CLI.new.greeting 
-CurlyProductCheck::CLI.new.call 
-    # using name spacing (nesting) here incase user has other gems called CLI. 
-    # .new is a class method that triggers initialize method/lifecyclet/instance method
+#CurlyProductCheck::CLI.new.call 
+    # using name spacing (nesting) here incase user has other gems with CLI files. 
+    # .new is a class method that triggers initialize method/lifecycle/instance method
     # .call is an instance method
