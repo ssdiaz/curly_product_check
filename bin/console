@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
+require "bundler/setup" #We require ‘bundler/setup’, otherwise app won’t know to use bundler to install our gems and then our Gemfile would be pointless
 require "curly_product_check"
 
 # You can add fixtures and/or initialization code here to make experimenting
